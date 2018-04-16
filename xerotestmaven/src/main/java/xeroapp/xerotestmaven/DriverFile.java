@@ -93,7 +93,7 @@ public static boolean  status=true;
 				
 			}
 		}
-		extent.close();
+		//extent.close();
 	//	ReuseXero.endReport(extent);
 	//	extent.flush();
 
