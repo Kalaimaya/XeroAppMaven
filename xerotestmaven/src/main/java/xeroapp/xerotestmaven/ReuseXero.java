@@ -28,6 +28,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
@@ -124,7 +127,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 		public static ExtentReports startReport(String reportPath){
     		//System.getProperty("user.dir") +"/test-output/STMExtentReport.html"
     		htmlReporter = new ExtentHtmlReporter(reportPath);
-    		extent = new ExtentReports ();
+    		ExtentReports extent=new ExtentReports();
     		extent.attachReporter(htmlReporter);
     		extent.setSystemInfo("Host Name", "Xero QA");
     		extent.setSystemInfo("Environment", "Automation Testing");
@@ -139,6 +142,8 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
     	
     	public static ExtentTest createTestReport(String testName,ExtentReports extent){
     		logger = extent.createTest(testName);
+    		//logger.log(Status.PASS,MarkupHelper.createLabel("testcase passed",ExtentColor.GREEN));
+
     		return logger;
     	}
     	public static void endReport(ExtentReports extent){
@@ -191,6 +196,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
     		
     		if(status.equalsIgnoreCase("pass"))
     			fillBackgroundColor(wb, "green", cell);
+    			
     		else
     			fillBackgroundColor(wb, "red", cell);
     		

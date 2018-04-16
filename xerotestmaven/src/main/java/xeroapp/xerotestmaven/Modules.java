@@ -40,11 +40,7 @@ public class Modules {
 			driver=new ChromeDriver();
 			//driver.manage().window().maximize();
 		}
-		else if(name.equalsIgnoreCase("ie")){
-			System.out.println("ie entered");
-			System.setProperty("webdriver.ie.driver","./src/utilities/IEDriverServer.exe");
-			driver=new InternetExplorerDriver();
-		}
+		
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		return driver;
 	}
@@ -57,26 +53,7 @@ public class Modules {
 			
 		}
 	}
-	public static WebDriver Login_toSalesforce(WebDriver driver) throws InterruptedException{
-		driver.get("https://login.salesforce.com/");
-		driver.findElement(By.id("username")).sendKeys("divya.bausa@gmail.com");
-		driver.findElement(By.id("password")).sendKeys("Divya@1988");
-		Thread.sleep(5000);//due to my antivirus secure tab
-		driver.findElement(By.id("Login")).click();
-		Thread.sleep(6000);
-		return driver;
-	}
-	
-	public static WebDriver Login_toSalesforce(WebDriver driver,String id,String password,boolean remember) throws InterruptedException{
-		driver.get("https://login.salesforce.com/");
-		driver.findElement(By.id("username")).sendKeys(id);
-		driver.findElement(By.id("password")).sendKeys(password);
-		if(remember)
-			driver.findElement(By.xpath("//*[@id='rememberUn']")).click();
-		driver.findElement(By.id("Login")).click();
-		Thread.sleep(6000);
-		return driver;
-	}
+
 	
 	public static String[][] readXlSheet(String link,String sheetName) throws IOException{
 		FileInputStream fio=new FileInputStream(new File(link));

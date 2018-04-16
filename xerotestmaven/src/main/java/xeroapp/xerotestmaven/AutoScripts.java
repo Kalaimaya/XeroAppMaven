@@ -68,6 +68,7 @@ public class AutoScripts extends Base {
 			System.out.println("error message is not verified...testcase failed");
 		driver.close();
 	}
+	
 	public static void LoginToXero1C(String browser) throws InterruptedException{
 
 		log(1);
@@ -122,7 +123,7 @@ public class AutoScripts extends Base {
 
 	}
 
-	public static void XerTest2A(String browser){
+	public static void XeroTest2A(String browser){
 		log(1);
 		driver= ReuseXero.launchBrowser(browser);
 		log(2);
@@ -312,37 +313,7 @@ public class AutoScripts extends Base {
 		System.out.println("Logged out successfully");
 		driver.close();
 	}
-	public static void XeroTest6A(String browser) throws InterruptedException{
-		log(1);
-		driver= ReuseXero.launchBrowser(browser);
-		log(2);
-		driver.get(ReuseXero.xeroProp.getProperty("url"));
-		driver.findElement(By.xpath("html/body/div[6]/header/nav/div[2]/div/div[1]/div/div/ul/li[2]/a")).click();
 
-		log(3);
-		driver.manage().window().maximize();
-		
-		driver.findElement(By.xpath(".//*[@id='email']")).sendKeys(ReuseXero.xeroProp.getProperty("username"));
-		driver.findElement(By.xpath(".//*[@id='password']")).sendKeys(ReuseXero.xeroProp.getProperty("password"));
-		driver.findElement(By.xpath(".//*[@id='submitButton']")).click();
-		driver.findElement(By.xpath(".//*[@id='xero-nav']/div[2]/div[1]/div[2]/a")).click();
-		driver.findElement(By.xpath(".//*[@id='xero-nav']/div/div[1]/div[2]/div/ul/li[1]/a")).click();
-		driver.findElement(By.xpath(".//*[@id='button-1041-btnInnerEl']")).click();
-		//FluentWait<WebDriver> wait = null;
-//		String account=".//*[@id='filefield-1174-button-fileInputEl']";
-		WebDriverWait wait1 = new WebDriverWait(driver, 10);
-		//driver.findElement(By.xpath("//div[@id='photoSection']/div")).click();
-		String f1=".//*[@id='filefield-1174-button-fileInputEl']";
-		Thread.sleep(2000);
-		//wait1.until(ExpectedConditions.visibilityOfElementLocated((By.xpath(f1))));
-		driver.findElement(By.xpath(f1)).sendKeys("C:\\Users\\meta\\Desktop\\Capture.png");
-	   // WebElement browse=wait1.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='filefield-1174-button-fileInputEl']")));
-		//browse.sendKeys("C:\\Users\\meta\\Desktop\\Capture.png");
-		//driver.findElement(By.xpath(".//*[@id='filefield-1174-button-fileInputEl']")).click();
-		driver.findElement(By.xpath(".//*[@id='button-1178-btnInnerEl']")).click();
-        System.out.println("Picture uploded");
-        driver.close();
-	}
 	public static void XeroTest8A(String browser){
 		log(1);
 		driver= ReuseXero.launchBrowser(browser);
@@ -625,5 +596,32 @@ public class AutoScripts extends Base {
 			System.out.println("page is not displayed");
 		
 		driver.close();
+	}
+	public static void XeroTest6A(String browser) throws InterruptedException{
+		log(1);
+		driver= ReuseXero.launchBrowser(browser);
+		log(2);
+		driver.get(ReuseXero.xeroProp.getProperty("url"));
+		driver.findElement(By.xpath("html/body/div[6]/header/nav/div[2]/div/div[1]/div/div/ul/li[2]/a")).click();
+
+		log(3);
+		driver.manage().window().maximize();
+		
+		driver.findElement(By.xpath(".//*[@id='email']")).sendKeys(ReuseXero.xeroProp.getProperty("username"));
+		driver.findElement(By.xpath(".//*[@id='password']")).sendKeys(ReuseXero.xeroProp.getProperty("password"));
+		driver.findElement(By.xpath(".//*[@id='submitButton']")).click();
+		driver.findElement(By.xpath(".//*[@id='xero-nav']/div[2]/div[1]/div[2]/a")).click();
+		driver.findElement(By.xpath(".//*[@id='xero-nav']/div/div[1]/div[2]/div/ul/li[1]/a")).click();
+		driver.findElement(By.xpath(".//*[@id='button-1041-btnInnerEl']")).click();
+		//FluentWait<WebDriver> wait = null;
+//		String account=".//*[@id='filefield-1174-button-fileInputEl']";
+		WebDriverWait wait1 = new WebDriverWait(driver, 10);
+		//driver.findElement(By.xpath("//div[@id='photoSection']/div")).click();
+		 driver.findElement(By.id("filefield-1174-button-fileInputEl")).click();
+		  //  driver.findElement(By.id("filefield-1174-button-fileInputEl")).clear();
+		    driver.findElement(By.id("filefield-1174-button-fileInputEl")).sendKeys("C:\\Users\\meta\\Desktop\\New folder\\Dependent.PNG");
+		    driver.findElement(By.id("button-1178-btnInnerEl")).click();
+        System.out.println("Picture uploded");
+        driver.close();
 	}
 }
